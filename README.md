@@ -68,3 +68,8 @@ To run the application:
 1. Open the `index.html` file in a web browser.
 2. You should see the heading "Hi from React" displayed on the webpage.
 
+# Package.json
+It is configuration of npm & It keeps track of what exact version of that package is installed
+
+# Package-lock.json
+It keeps track of exact version of the dependencies
