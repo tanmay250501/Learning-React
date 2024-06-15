@@ -2,8 +2,9 @@
   "name": "learning-react",
   "version": "1.0.0",
   "description": "This is demo project",
-  "main": "App.js",
   "scripts": {
+    "start" : "parcel index.html",
+    "build" : "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -24,5 +25,8 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
-  }
+  },
+  "browserlist" : [
+    "last 3 versions"
+  ]
 }
