@@ -14,7 +14,9 @@ const parent = React.createElement("div", { id: "parent" },
 //JSX (transpiled before it6 reaches JS engine) - PARCEL - BABEL => its job is to convert JSX code to React Code
 
 //JSX => React.createElement => ReactElement - JS object => HTMLElement(render)
-const JsxHeading = <h1>Heading from JSX</h1>
+const JsxHeading = (<h1>Heading from JSX</h1>)
+
+// use thsi brackets () to specify that jsx is writen under this bracket
 
 // const heading = React.createElement("h1", { id: "heading" }, "Hii from React");
 
