@@ -2957,14 +2957,13 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
-const parent = /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-    id: "parent"
-}, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-    id: "child"
-}, [
-    /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {}, "I am  Tanmay Sawwalakhe"),
-    /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {}, "I am an h2 tag")
-]));
+// const parent = React.createElement("div", { id: "parent" },
+//     React.createElement("div", { id: "child" },
+//         [React.createElement("h1", {}, "I am  Tanmay Sawwalakhe"),
+//         React.createElement("h2", {}, "I am an h2 tag")
+//         ]
+//     )
+// )
 //JSX (transpiled before it6 reaches JS engine) - PARCEL - BABEL => its job is to convert JSX code to React Code
 //JSX => React.createElement => ReactElement - JS object => HTMLElement(render)
 const JsxHeading = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -3002,12 +3001,12 @@ const Header = ()=>{
                 }, void 0, false, {
                     fileName: "App.js",
                     lineNumber: 46,
-                    columnNumber: 13
+                    columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "App.js",
                 lineNumber: 45,
-                columnNumber: 9
+                columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "nav-items",
@@ -3018,39 +3017,39 @@ const Header = ()=>{
                         }, void 0, false, {
                             fileName: "App.js",
                             lineNumber: 50,
-                            columnNumber: 17
+                            columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "About Us"
                         }, void 0, false, {
                             fileName: "App.js",
                             lineNumber: 51,
-                            columnNumber: 17
+                            columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Contact US"
                         }, void 0, false, {
                             fileName: "App.js",
                             lineNumber: 52,
-                            columnNumber: 17
+                            columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Cart"
                         }, void 0, false, {
                             fileName: "App.js",
                             lineNumber: 53,
-                            columnNumber: 17
+                            columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "App.js",
                     lineNumber: 49,
-                    columnNumber: 13
+                    columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "App.js",
                 lineNumber: 48,
-                columnNumber: 9
+                columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
@@ -3063,44 +3062,178 @@ _c = Header;
 const StyleCard = {
     backgroundColor: "#f0f0f0"
 };
-const RestaurantCards = ()=>{
+const resList = [
+    {
+        data: {
+            id: "1",
+            resName: "KFC",
+            cuisine: [
+                "North Indian",
+                "Barbecue",
+                "Biryani"
+            ],
+            avgRating: "4.5",
+            cloudinaryImageId: "qchozfltdh9uf9a2hqjk"
+        }
+    },
+    {
+        data: {
+            id: "2",
+            resName: "Veg Daawat by Behrouz",
+            cuisine: [
+                "Biryani",
+                "North Indian",
+                "Kebabs"
+            ],
+            avgRating: "4.2",
+            cloudinaryImageId: "2b579171cefc545ce6479e21c0016798"
+        }
+    },
+    {
+        data: {
+            id: "3",
+            resName: "Pizza Hut",
+            cuisine: [
+                "Italian",
+                "Pizza",
+                "Pasta"
+            ],
+            avgRating: "4.3",
+            cloudinaryImageId: "qchozfltdh9uf9a2hqjk"
+        }
+    },
+    {
+        data: {
+            id: "4",
+            resName: "The Brooklyn Creamery - Healthy",
+            cuisine: [
+                "Desserts",
+                "Ice Cream",
+                "Healthy Food"
+            ],
+            avgRating: "4.1",
+            cloudinaryImageId: "b1b35780a9b1dfeb26d680506d494eaa"
+        }
+    },
+    {
+        data: {
+            id: "5",
+            resName: "Makhani Darbar",
+            cuisine: [
+                "Biryani",
+                "North Indian",
+                "Kebabs"
+            ],
+            avgRating: "4.0",
+            cloudinaryImageId: "c583da4b69d264ffe705e5918fad0e98"
+        }
+    },
+    {
+        data: {
+            id: "6",
+            resName: "Faasos' Signature Wraps & Rolls",
+            cuisine: [
+                "Fast Food",
+                "Snacks",
+                "North Indian"
+            ],
+            avgRating: "4.6",
+            cloudinaryImageId: "c583ca6ce40b426797a78ae2ac91f2ec"
+        }
+    },
+    {
+        data: {
+            id: "7",
+            resName: "Domino's Pizza",
+            cuisine: [
+                "Italian",
+                "Pizza",
+                "Fast Food",
+                "Pastas"
+            ],
+            avgRating: "4.4",
+            cloudinaryImageId: "d0450ce1a6ba19ea60cd724471ed54a8"
+        }
+    },
+    {
+        data: {
+            id: "8",
+            resName: "Haldiram's Restaurant",
+            cuisine: [
+                "North Indian",
+                "South Indian",
+                "Biryani"
+            ],
+            avgRating: "4.3",
+            cloudinaryImageId: "1abb89624b491497c8cff182d95ac457"
+        }
+    },
+    {
+        data: {
+            id: "9",
+            resName: "Theobroma",
+            cuisine: [
+                "Bakery",
+                "Desserts"
+            ],
+            avgRating: "4.1",
+            cloudinaryImageId: "63dd75492c47fcec191132b8eb299ea5"
+        }
+    },
+    {
+        data: {
+            id: "10",
+            resName: "The Belgian Waffle Co.",
+            cuisine: [
+                "Waffle",
+                "Desserts",
+                "Ice Cream"
+            ],
+            avgRating: "4.5",
+            cloudinaryImageId: "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/13/2113e3fa-c06f-4d4e-953b-4d7252a25d6f_259340.JPG"
+        }
+    }
+];
+const RestaurantCards = (props)=>{
+    const { resData } = props;
+    const { cloudinaryImageId, resName, cuisine, avgRating } = resData?.data;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "res-card",
-        style: StyleCard,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 className: "res-img",
-                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjAMLedZRk2kc2Gg7NC0jRaHIjxa1-vf-b_A&s"
+                src: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId
             }, void 0, false, {
                 fileName: "App.js",
-                lineNumber: 67,
+                lineNumber: 206,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: "McDonalds"
+                children: resName
             }, void 0, false, {
                 fileName: "App.js",
-                lineNumber: 68,
+                lineNumber: 207,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                className: "res-dis",
+                children: cuisine.join(" ,")
+            }, void 0, false, {
+                fileName: "App.js",
+                lineNumber: 208,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: "Burger"
+                children: avgRating
             }, void 0, false, {
                 fileName: "App.js",
-                lineNumber: 69,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: "4.3"
-            }, void 0, false, {
-                fileName: "App.js",
-                lineNumber: 70,
+                lineNumber: 209,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "App.js",
-        lineNumber: 66,
+        lineNumber: 205,
         columnNumber: 9
     }, undefined);
 };
@@ -3114,47 +3247,27 @@ const Body = ()=>{
                 children: "Search"
             }, void 0, false, {
                 fileName: "App.js",
-                lineNumber: 80,
-                columnNumber: 9
+                lineNumber: 219,
+                columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "res-container",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantCards, {}, void 0, false, {
+                children: resList.map((restaurant)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantCards, {
+                        resData: restaurant
+                    }, restaurant.data.id, false, {
                         fileName: "App.js",
-                        lineNumber: 83,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantCards, {}, void 0, false, {
-                        fileName: "App.js",
-                        lineNumber: 84,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantCards, {}, void 0, false, {
-                        fileName: "App.js",
-                        lineNumber: 85,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantCards, {}, void 0, false, {
-                        fileName: "App.js",
-                        lineNumber: 86,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantCards, {}, void 0, false, {
-                        fileName: "App.js",
-                        lineNumber: 87,
-                        columnNumber: 13
-                    }, undefined)
-                ]
-            }, void 0, true, {
+                        lineNumber: 222,
+                        columnNumber: 46
+                    }, undefined))
+            }, void 0, false, {
                 fileName: "App.js",
-                lineNumber: 82,
-                columnNumber: 9
+                lineNumber: 221,
+                columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "App.js",
-        lineNumber: 79,
+        lineNumber: 218,
         columnNumber: 9
     }, undefined);
 };
@@ -3164,25 +3277,25 @@ const AppLayout = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
                 fileName: "App.js",
-                lineNumber: 96,
+                lineNumber: 231,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Body, {}, void 0, false, {
                 fileName: "App.js",
-                lineNumber: 97,
+                lineNumber: 232,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "App.js",
-        lineNumber: 95,
+        lineNumber: 230,
         columnNumber: 5
     }, undefined);
 _c3 = AppLayout;
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
     fileName: "App.js",
-    lineNumber: 104,
+    lineNumber: 239,
     columnNumber: 13
 }, undefined));
 var _c, _c1, _c2, _c3;
