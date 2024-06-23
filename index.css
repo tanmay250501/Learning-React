@@ -81,3 +81,9 @@ html {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+
+.filter-btn{
+    margin: 20px;
+    padding: 5px;
+    cursor:pointer
+}

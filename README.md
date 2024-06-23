@@ -118,3 +118,24 @@ const Divisionheading = () => (
 JSX (transpiled before it6 reaches JS engine) - PARCEL - BABEL => its job is to convert JSX code to React Code
 
 JSX => React.createElement => ReactElement - JS object => HTMLElement(render)
+
+## Types of Expots
+
+# 1. Named Export
+```js
+
+export const example ="demo";
+```
+
+# 2. Default Export
+
+```jsx
+const example = "demo";
+
+export default example;
+```
+
+## React Hooks 
+# (Hooks are Normal JS Utility function) => given by React 
+- useState() - SuperPowerfull React Variable
+- useEffect()
