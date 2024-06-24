@@ -1,6 +1,7 @@
 import RestaurantCards from "./RestaurantCard";
 import resList from "../utils/mockData";
 import {useState , useEffect} from "react";
+import Shimmer from "./Shimmer";
 
 
 
@@ -50,26 +51,33 @@ import {useState , useEffect} from "react";
 
 const Body = () => {
 
-    const [List , setList] = useState(resList)
+    const [List , setList] = useState([])
 
     useEffect(() => {
         fetchData()
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://mocki.io/v1/b45bd0c7-e4d5-4d04-9446-2a97bf205fd7");
+        const data = await fetch("https://mocki.io/v1/54a392d1-654f-4377-88e1-a2add321c8b8");
+        // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
         const json = await data.json()
 
         console.log(json);
+        // setList(json.data.cards[4].card.card)
         setList(json)
 
         console.log("useEffect is called Succesfully")
     };
-
     
+    // This is conditional Rendering
+    // if(List.length == 0){
+    //     return <Shimmer/>
+    // }
 
-    return (
+
+    return List.length == 0 ? (<Shimmer/>) 
+    : (
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" 

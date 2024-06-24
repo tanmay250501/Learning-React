@@ -1,19 +1,6 @@
 let resList = [
     {
         data: {
-            id: "1",
-            name: "KFC",
-            cuisines: [
-                "North Indian",
-                "Barbecue",
-                "Biryani",
-            ],
-            avgRating: "4.5",
-            cloudinaryImageId: "qchozfltdh9uf9a2hqjk"
-        }
-    },
-    {
-        data: {
             id: "2",
             name: "Veg Daawat by Behrouz",
             cuisines: [
@@ -23,6 +10,20 @@ let resList = [
             ],
             avgRating: "3.7",
             cloudinaryImageId: "2b579171cefc545ce6479e21c0016798"
+        }
+    },
+    {
+
+        data: {
+            id: "1",
+            name: "KFC",
+            cuisines: [
+                "North Indian",
+                "Barbecue",
+                "Biryani",
+            ],
+            avgRating: "4.5",
+            cloudinaryImageId: "qchozfltdh9uf9a2hqjk"
         }
     },
     {

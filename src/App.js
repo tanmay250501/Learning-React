@@ -11,6 +11,7 @@ import Body from "./MyComponents/Body";
 
 const AppLayout = () => (
     <div className="app">
+        
         <Header />
         <Body />
     </div>
