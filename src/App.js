@@ -4,6 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./MyComponents/Header";
 import Body from "./MyComponents/Body";
+import { createBrowserRouter } from "react-router-dom";
 
 
 
@@ -16,6 +17,7 @@ const AppLayout = () => (
         <Body />
     </div>
 )
+
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"))

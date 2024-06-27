@@ -12,6 +12,8 @@ const Body = () => {
     const [isLoading, setIsLoading] = useState(true); // State to manage loading state
 
     // Whenever state variable update, react triggers a reconciliation cycle (re-renders the component)
+
+
     useEffect(() => {
         fetchData();
     }, []);
