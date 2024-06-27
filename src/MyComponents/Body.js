@@ -1,99 +1,101 @@
 import RestaurantCards from "./RestaurantCard";
-import resList from "../utils/mockData";
-import {useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-
-
-
-// Normal JS Variable
-// let ListJs = [
-//     {
-//         data: {
-//             id: "1",
-//             resName: "KFC",
-//             cuisine: [
-//                 "North Indian",
-//                 "Barbecue",
-//                 "Biryani",
-//             ],
-//             avgRating: "4.5",
-//             cloudinaryImageId: "qchozfltdh9uf9a2hqjk"
-//         }
-//     },
-//     {
-//         data: {
-//             id: "2",
-//             resName: "Dominoz",
-//             cuisine: [
-//                 "North Indian",
-//                 "Barbecue",
-//                 "Biryani",
-//             ],
-//             avgRating: "3",
-//             cloudinaryImageId: "qchozfltdh9uf9a2hqjk"
-//         }
-//     },
-//     {
-//         data: {
-//             id: "3",
-//             resName: "Beharouz",
-//             cuisine: [
-//                 "North Indian",
-//                 "Barbecue",
-//                 "Biryani",
-//             ],
-//             avgRating: "3",
-//             cloudinaryImageId: "qchozfltdh9uf9a2hqjk"
-//         }
-//     },
-// ]
-
+import NoResults from "./NoResults"; // Import the NoResults component
 
 const Body = () => {
+    // Local state variables - Super powerful variable
+    const [originalList, setOriginalList] = useState([]); // To keep the original list
+    const [List, setList] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const [noResults, setNoResults] = useState(false);
+    const [isLoading, setIsLoading] = useState(true); // State to manage loading state
 
-    const [List , setList] = useState([])
-
+    // Whenever state variable update, react triggers a reconciliation cycle (re-renders the component)
     useEffect(() => {
-        fetchData()
+        fetchData();
     }, []);
 
     const fetchData = async () => {
+        setIsLoading(true); // Set loading to true before fetching data
         const data = await fetch("https://mocki.io/v1/54a392d1-654f-4377-88e1-a2add321c8b8");
-        // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-
-        const json = await data.json()
+        const json = await data.json();
 
         console.log(json);
-        // setList(json.data.cards[4].card.card)
-        setList(json)
+        setOriginalList(json); // Save the original list
+        setList(json);
+        setIsLoading(false); // Set loading to false after data is fetched
 
-        console.log("useEffect is called Succesfully")
+        console.log("useEffect is called successfully");
     };
-    
-    // This is conditional Rendering
-    // if(List.length == 0){
-    //     return <Shimmer/>
-    // }
 
+    const handleSearch = () => {
+        console.log(searchText);
 
-    return List.length == 0 ? (<Shimmer/>) 
-    : (
+        const filteredRestaurant = originalList.filter((res) =>
+            res.data.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+
+        if (filteredRestaurant.length === 0) {
+            setNoResults(true);
+        } else {
+            setNoResults(false);
+        }
+
+        setList(filteredRestaurant);
+    };
+
+    const handleInputChange = (e) => {
+        setSearchText(e.target.value);
+        setNoResults(false); // Reset noResults state when input changes
+        if (e.target.value === '') {
+            setList(originalList); // Reset list to original list if search text is cleared
+        }
+    };
+
+    if (isLoading) {
+        return <Shimmer />;
+    }
+
+    return (
         <div className="body">
             <div className="filter">
-                <button className="filter-btn" 
-                onClick={() =>{
-                        filteredList = List.filter(
-                            (rating) => rating.data.avgRating > 4);
-                        setList(filteredList)
-                }} >Top Rated Restaurants</button>
+                <div className="search">
+                    <input
+                        type="text"
+                        className="search-box"
+                        value={searchText}
+                        onChange={handleInputChange}
+                    />
+                    <button className="search-btn" onClick={handleSearch}>
+                        Search
+                    </button>
+                </div>
+
+                <button
+                    className="filter-btn"
+                    onClick={() => {
+                        const filteredList = originalList.filter(
+                            (rating) => rating.data.avgRating > 4
+                        );
+                        setList(filteredList);
+                    }}
+                >
+                    Top Rated Restaurants
+                </button>
             </div>
 
-            <div className="res-container">
-                {List.map((restaurant) => <RestaurantCards key={restaurant.data.id} resData ={restaurant} /> )}
-
-            </div>
+            {noResults ? (
+                <NoResults />
+            ) : (
+                <div className="res-container">
+                    {List.map((restaurant) => (
+                        <RestaurantCards key={restaurant.data.id} resData={restaurant} />
+                    ))}
+                </div>
+            )}
         </div>
-    )
+    );
 };
 
 export default Body;
