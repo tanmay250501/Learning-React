@@ -189,3 +189,29 @@ html {
   font-size: 16px;
   color: #666;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .error-container {
+    text-align: center;
+    perspective: 1000px;
+  }
+  
+  .error-code {
+    font-size: 10rem;
+    font-weight: bold;
+    color: #ff6347;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-message {
+    font-size: 2rem;
+    color: #333;
+  }
+  
