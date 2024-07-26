@@ -16,29 +16,26 @@ const RecepieMenu = () => {
         console.log(json)
         setResMenu(json.data)
     };
+    
+    if (resMenu === null) return <Shimmer /> ;
+    
+    const {name , cuisines , costForTwoMessage , cloudinaryImageId} = resMenu?.cards?.[2]?.card?.card?.info;
 
-    const restaurantInfo = resMenu?.cards?.[2]?.card?.card?.info;
-    const name = restaurantInfo?.name;
-    const cuisines = restaurantInfo?.cuisines;
-    const costForTwoMessage = restaurantInfo?.costForTwoMessage;
-    const cloudinaryImageId = restaurantInfo?.cloudinaryImageId;
 
-    return (resMenu === null) ? <Shimmer /> : (
+    const {itemCards} = resMenu?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
+    console.log(itemCards)
+
+    return  (
         <div className="res-card">
             <img className="res-img" src={CDN_URL + cloudinaryImageId} alt={name} />
             <h3>{name}</h3>
-            <h3>{costForTwoMessage}</h3>
+            <h1>Menu</h1>
+            <ul>
+            {itemCards.map((item) => <li key={item.card.info.id}>{item.card.info.name} - Rs:{item.card.info.price/100}</li>)}
+            </ul>
             <h4 className="res-dis">{cuisines.join(", ")}</h4>
-        </div>
-        // <div className="menu">
-        //     <h1>{name} </h1>
-        //     <h3>{costForTwoMessage}</h3>
-        //     <h3>Catergori</h3>
-        //     <ul>
-        //             <li>{cuisines.join(", ")}</li>
-        //         </ul>
 
-        // </div>
+        </div>
     )
 };
 
