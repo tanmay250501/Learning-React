@@ -13,19 +13,20 @@ const Body = () => {
 
     // Whenever state variable update, react triggers a reconciliation cycle (re-renders the component)
 
-
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
         setIsLoading(true); // Set loading to true before fetching data
-        const data = await fetch("https://mocki.io/v1/54a392d1-654f-4377-88e1-a2add321c8b8");
+        const data = await fetch("https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.107662&lng=79.1369&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
+        console.log(json)
 
-        console.log(json);
-        setOriginalList(json); // Save the original list
-        setList(json);
+        const restaurants = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+
+        setOriginalList(restaurants); // Save the original list
+        setList(restaurants);
         setIsLoading(false); // Set loading to false after data is fetched
 
         console.log("useEffect is called successfully");
@@ -35,7 +36,7 @@ const Body = () => {
         console.log(searchText);
 
         const filteredRestaurant = originalList.filter((res) =>
-            res.data.name.toLowerCase().includes(searchText.toLowerCase())
+            res.info.name.toLowerCase().includes(searchText.toLowerCase())
         );
 
         if (filteredRestaurant.length === 0) {
@@ -78,7 +79,7 @@ const Body = () => {
                     className="filter-btn"
                     onClick={() => {
                         const filteredList = originalList.filter(
-                            (rating) => rating.data.avgRating > 4
+                            (rating) => rating.info.avgRating > 4.3
                         );
                         setList(filteredList);
                     }}
@@ -92,7 +93,7 @@ const Body = () => {
             ) : (
                 <div className="res-container">
                     {List.map((restaurant) => (
-                        <RestaurantCards key={restaurant.data.id} resData={restaurant} />
+                        <RestaurantCards key={restaurant.info.id} resData={restaurant} />
                     ))}
                 </div>
             )}
