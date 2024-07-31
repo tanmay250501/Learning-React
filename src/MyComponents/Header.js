@@ -8,14 +8,14 @@ const Header = () => {
     // useEffect will be called eafter the component is rendered
     // if dependency array is emty [] => the useEffect will be called on inotial render only(just once)
     // if dependency array is [btnName] => useEffect will be called every time when btnName is updated.
-    useEffect(()=> {
+    useEffect(() => {
         console.log("UseEffect is called")
-    },[btnName] )
+    }, [btnName])
 
     return (
         <div className="header">
             <div className="logo-container">
-                <img className="logo" src={LOGO_URL} />
+                <img className="logo" src={LOGO_URL} alt="Logo" />
             </div>
             <div className="nav-items">
                 <ul>
@@ -23,15 +23,16 @@ const Header = () => {
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/contact">Contact Us</Link></li>
                     <li><Link to="/">Cart</Link></li>
-                    
-                    <button className="login" onClick={() => {
-                        btnName == "LogIn" ?
-                            setbtnNam("LogOut")
-                            : setbtnNam("LogIn")
-                    }}>{btnName}</button>
+                    <li>
+                        <button className="login" onClick={() => {
+                            btnName === "LogIn" ? 
+                            setbtnNam("LogOut") : setbtnNam("LogIn")
+                        }}>{btnName}</button>
+                    </li>
                 </ul>
             </div>
         </div>
+
     )
 };
 

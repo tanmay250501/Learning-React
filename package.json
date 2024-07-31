@@ -20,7 +20,8 @@
   "homepage": "https://github.com/tanmay250501/Learning-React#readme",
   "devDependencies": {
     "parcel": "^2.12.0",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.7"
   },
   "dependencies": {
     "axios": "^1.7.2",
