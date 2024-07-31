@@ -22,7 +22,7 @@ const Body = () => {
     const fetchData = async () => {
         setIsLoading(true); // Set loading to tru   qwe56c`18e before fetching data
         const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.107662&lng=79.1369&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+            "https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.107662&lng=79.1369&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
         const json = await data.json(); // Parse the response as JSON
         console.log(json); // Log the entire response
@@ -40,6 +40,7 @@ const Body = () => {
 
         console.log("useEffect is called successfully");
     };
+    
 
     const handleSearch = () => {
         console.log(searchText);
@@ -65,6 +66,15 @@ const Body = () => {
             setList(originalList); // Reset list to original list if search text is cleared
         }
     };
+    
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault(); // Prevent form submission or other default behavior
+          handleSearch(); // Trigger search
+        }
+        };
+    
+    
 
     if (isLoading) {
         return <Shimmer />; // Render the Shimmer component while loading
@@ -79,8 +89,9 @@ const Body = () => {
                         className="search-box"
                         value={searchText}
                         onChange={handleInputChange} // Handle input change
+                        onKeyDown={handleKeyDown}
                     />
-                    <button className="search-btn" onClick={handleSearch}>
+                    <button className="search-btn" onClick={handleSearch} >
                         Search
                     </button>
                 </div>
